@@ -1,17 +1,21 @@
-var modal = document.getElementById('Modal');
-var btn = document.getElementById("Btn");
-var span = document.getElementsByClassName("close")[0];
+let modal = document.querySelector(".modal");
+let openModalBtn = document.querySelector(".app__btn");
+let closeBtn = document.querySelector(".close-btn");
 
-btn.onclick = function () {
-    modal.style.display = "block";
-}
+openModalBtn.addEventListener('click', () => {
+  modal.classList.add('show');
+})
 
-span.onclick = function () {
-    modal.style.display = "none";
-}
+closeBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+});
 
-/*window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}*/
+modal.addEventListener("click", (event) => {
+  event.preventDefault();
+  if (event.target.classList.contains("modal__inner")) {
+    modal.classList.remove("show");
+  } else if(event.target === closeBtn){
+    modal.classList.remove("show");
+  }
+});
+
