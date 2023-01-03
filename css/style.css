@@ -6,6 +6,12 @@ body {
   background-color: #5cb299;
 }
 
+.hide{
+  display: none !important;
+}
+.show{
+  display: block !important;
+}
 .container {
   max-width: 1360px;
   margin: 0 auto;
@@ -127,18 +133,26 @@ body {
 }
 
 
+
+/*Modal Form*/
+
 .modal {
   display: none;
   position: fixed;
   z-index: 101;
-  padding-top: 150px;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  overflow: auto;
   background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal__inner{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
 .modal-content {
@@ -147,16 +161,18 @@ body {
   margin: 15px auto;
   padding: 20px;
   border: 8px solid #FF8C00;
-  width: 30%;
+  border-radius: 10px;
+  max-width: 400px;
+  width: 100%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 
-.close {
+.close-btn {
   color: #666666;
-  float: right;
-  font-size: 28px;
+  font-size: 30px;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .close:hover,
@@ -170,6 +186,11 @@ body {
   display: flex;
   flex-direction: column;
 }
+.form__inner{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
 
 .form div {
   font-weight: bold;
@@ -177,14 +198,25 @@ body {
   margin-bottom: 10px;
 }
 
-.form input, select {
-  margin-bottom: 30px;
+.form input {
+  margin-bottom: 15px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.705);
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
+}
+
+.form__select{
+  margin-bottom: 10px;
+  border: none;
+  padding: 10px;
+  box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
 }
 
 .form__btn {
   display: flex;
   margin: 0 auto;
-  padding: 15px 25px 15px 60px;
+  padding: 15px 25px 15px 70px;
   background-color: black;
   border-radius: 50px;
   color: #fff;
@@ -193,7 +225,7 @@ body {
   font-weight: 500;
   font-size: 15px;
   position: relative;
-
+  transition: all .5s;
 }
 
 .form__btn:hover .form__decor {
@@ -208,8 +240,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   background-color: #FF8C00;
   border-radius: 50%;
   position: absolute;

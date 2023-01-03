@@ -13,31 +13,36 @@
     <div class="app">
       <div class="container">
         <div class="app__tray">
-        <img src="images/4.png" alt="food" class="app__food-tray" />
+          <img src="images/4.png" alt="food" class="app__food-tray" />
         </div>
         <div class="app__food-wrapper">
           <ul class="app__food-inner">
             <li class="app__food-item">
-              <img src="images/1.png" draggable="true" alt="food" class="app__food-img" />
+              <img
+                src="images/1.png"
+                draggable="true"
+                alt="food"
+                class="app__food-img"
+              />
               <h3 class="app__food-name">Text</h3>
               <p class="app__food-price">100 <span>UAH</span></p>
             </li>
-              <li class="app__food-item">
+            <li class="app__food-item">
               <img src="images/2.png" alt="food" class="app__food-img" />
               <h3 class="app__food-name">Text</h3>
               <p class="app__food-price">100 <span>UAH</span></p>
             </li>
-              <li class="app__food-item">
+            <li class="app__food-item">
               <img src="images/3.png" alt="food" class="app__food-img" />
               <h3 class="app__food-name">Text</h3>
               <p class="app__food-price">100 <span>UAH</span></p>
             </li>
-              <li class="app__food-item">
+            <li class="app__food-item">
               <img src="images/4.png" alt="food" class="app__food-img" />
               <h3 class="app__food-name">Text</h3>
               <p class="app__food-price">100 <span>UAH</span></p>
             </li>
-              <li class="app__food-item">
+            <li class="app__food-item">
               <img src="images/5.png" alt="food" class="app__food-img" />
               <h3 class="app__food-name">Text</h3>
               <p class="app__food-price">100 <span>UAH</span></p>
@@ -85,57 +90,69 @@
           </ul>
         </div>
         <div class="app__btn-box">
-            <button class="app__btn">
-                <div class="app__decor">
-                    <img src="images/arrow-right.svg" alt="">
-                </div>
-                <span>Зробити замовлення</span>
-            </button>
+          <button class="app__btn">
+            <div class="app__decor">
+              <img src="images/arrow-right.svg" alt="" />
+            </div>
+            <span>Зробити замовлення</span>
+          </button>
         </div>
       </div>
     </div>
 
     <div id="Modal" class="modal">
+      <div class="modal__inner">
         <div class="modal-content">
-            <span class="close">&times;</span>
-            <form class="form" name="feedback" method="POST">
-                <div>Прізвище</div>
-                <input type="text" name="name" required="required">
-                <div>Ім’я</div>
-                <input type="text" name="surname" required="required">
-                <div>Клас</div>
-                <select name="number" required="required">
-                    <option value="">Виберіть варіант</option>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                    <option>6</option>
-                    <option>7</option>
-                    <option>8</option>
-                    <option>9</option>
-                    <option>10</option>
-                    <option>11</option>
-                </select>
-                <div>Номер перерви</div>
-                <select name="number" required="required">
-                    <option value="">Виберіть варіант</option>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                    <option>6</option>
-                </select>
-                <button id="FormBtn" class="form__btn">
-                    <div class="form__decor">
-                        <img src="images/arrow-right.svg" alt="">
-                    </div>
-                    <span>Відправити</span>
-                </button>
-            </form>
+          <form class="form" name="feedback">
+            <div class="form__inner">
+              <div>Прізвище</div>
+              <button class="close-btn">&times;</button>
+            </div>
+            <input
+              placeholder="Ваше Прізвище"
+              type="text"
+              name="name"
+            />
+            <div>Ім’я</div>
+            <input
+              placeholder="Ваше ім’я"
+              type="text"
+              name="surname"
+            />
+            <div>Клас</div>
+            <select class="form__select" name="number" >
+              <option value="">Виберіть варіант</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+              <option>7</option>
+              <option>8</option>
+              <option>9</option>
+              <option>10</option>
+              <option>11</option>
+            </select>
+            <div>Номер перерви</div>
+            <select class="form__select" name="number">
+              <option value="">Виберіть варіант</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+            </select>
+            <button type="submit" id="FormBtn" class="form__btn">
+              <div class="form__decor">
+                <img src="images/arrow-right.svg" alt="arrow" />
+              </div>
+              <span>Відправити</span>
+            </button>
+          </form>
         </div>
+      </div>
     </div>
 
     <script src="js/modal.js"></script>
