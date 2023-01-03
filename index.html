@@ -85,16 +85,60 @@
           </ul>
         </div>
         <div class="app__btn-box">
-          <button class="app__btn">
-            <div class="app__decor">
-              <img src="images/arrow-right.svg" alt="">
-            </div>
-            <span>Зробити замовлення</span>
-          </button>
+            <button class="app__btn">
+                <div class="app__decor">
+                    <img src="images/arrow-right.svg" alt="">
+                </div>
+                <span>Зробити замовлення</span>
+            </button>
         </div>
       </div>
     </div>
 
+    <div id="Modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <form class="form" name="feedback" method="POST">
+                <div>Прізвище</div>
+                <input type="text" name="name" required="required">
+                <div>Ім’я</div>
+                <input type="text" name="surname" required="required">
+                <div>Клас</div>
+                <select name="number" required="required">
+                    <option value="">Виберіть варіант</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                    <option>11</option>
+                </select>
+                <div>Номер перерви</div>
+                <select name="number" required="required">
+                    <option value="">Виберіть варіант</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                </select>
+                <button id="FormBtn" class="form__btn">
+                    <div class="form__decor">
+                        <img src="images/arrow-right.svg" alt="">
+                    </div>
+                    <span>Відправити</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/modal.js"></script>
     <script src="js/app.js"></script>
   </body>
 </html>
