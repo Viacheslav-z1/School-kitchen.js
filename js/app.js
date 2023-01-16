@@ -25,3 +25,37 @@ tray.addEventListener('drop',(e)=>{
   let clone = img.cloneNode(true);
   tray.appendChild(clone);
 })
+
+/*Масив товарів */
+let goods = [
+  {
+    id: 0,
+    name: 'Hot dog',
+    price: 30,
+    imgUrl: '../images/',
+  },
+  {
+    id: 1,
+    name: 'Donut',
+    price: 20,
+    imgUrl: '../images/',
+  },
+  {
+    id: 2,
+    name: 'Sauces',
+    price: 10,
+    imgUrl: '../images/',
+  },
+  {
+    id: 3,
+    name: 'Pizza',
+    price: 30,
+    imgUrl: '../images/',
+  },
+  {
+    id: 4,
+    name: 'Burger',
+    price: 30,
+    imgUrl: '../images/',
+  }
+];
