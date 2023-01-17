@@ -19,6 +19,7 @@ modal.addEventListener("click", (event) => {
   }
 });
 
+
 function closeModal(modal) {
   modal.classList.add('blur-hide')
   setTimeout(() => {
@@ -34,3 +35,4 @@ function showModal(modal) {
     modal.classList.remove("blur-show");
   }, 280);
 }
+

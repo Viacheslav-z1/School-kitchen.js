@@ -2,7 +2,12 @@ const trayBox = document.querySelector(".app__tray-box");
 const trayInner = document.querySelector(".app__tray");
 const foodsList = document.querySelector(".app__food-inner");
 const totalPriceNode = document.querySelector(".app__price__number-num");
+
+const formList = document.querySelector(".form__list-items")
+const totalPriceForm = document.querySelector(".total__price_form")
+
 const notificationInner = document.querySelector(".notification__inner");
+
 
 let trayArr = [];
 
@@ -62,6 +67,7 @@ function addFoodToTray(dragEl) {
   trayArr.push(newFood);
 }
 
+
 /*Логіка додавання в корзину */
 function addToTray(e) {
   e.preventDefault();
@@ -77,6 +83,12 @@ function addToTray(e) {
   addFoodToTray(dragEl);
   calcPrice(trayArr);
   renderFoodsInTray(trayArr);
+
+  renderFoodsList(trayArr)
+}
+
+
+
   createNotification(dragEl);
 }
 
@@ -111,10 +123,12 @@ function deleteNotifications() {
 
 
 
+
 /*Функція рендеру товарів з массиву доданих товарів в корзину */
 function renderFoodsInTray(arr) {
   let foodsHtml = arr.map((item) => {
     return `
+          <img src="${item.imgUrl}" alt="food" class="app__food-img" />
     <img src="${item.imgUrl}" alt="food" class="app__food-img" />
     `;
   });
@@ -122,12 +136,24 @@ function renderFoodsInTray(arr) {
   trayInner.innerHTML = foodsHtml;
 }
 
+
+
+function calcPrice(arr) {
+  let totalPrice = 0;
+  arr.forEach(item => {
+    totalPrice += +item.price;
+  });
+  totalPriceNode.innerHTML = totalPrice;
+  totalPriceForm.innerHTML = totalPrice;
+
+
 function calcPrice(arr) {
   let totalPrice = 0;
   arr.forEach((item) => {
     totalPrice += +item.price;
   });
   totalPriceNode.innerHTML = totalPrice;
+
 }
 
 /*Функція рендеру товарів */
@@ -162,3 +188,17 @@ function renderFoodsItems(arr) {
   });
   trayBox.addEventListener("drop", addToTray);
 }
+
+
+/*Функція виводу товару в список в формі */
+function renderFoodsList(arr) {
+  let foodsHtml = arr.map((item) => {
+    return `
+            <li data-id="${item.id}">${item.name}<div class="price"> <span>${item.price}</span> <span>UAH</span></div> </li>
+    `;
+  });
+  foodsHtml = foodsHtml.join(" ");
+  formList.innerHTML = foodsHtml;
+
+}
+
