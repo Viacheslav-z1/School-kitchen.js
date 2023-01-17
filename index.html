@@ -8,30 +8,24 @@
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/fonts.css" />
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/media.css" />
   </head>
   <body>
     <div class="app">
       <div class="container">
         <div class="app__tray__container">
-          <div class="app__tray"></div>
+          <div class="app__tray-box">
+            <div class="app__tray"></div>
+          </div>
           <div class="app__price__container">
-            <div class="app__price__text">Сума</div>
-            <div class="app__price__number">100 <span>UAH</span> </div>
+            <div class="app__price__container-box">
+              <div class="app__price__text">Вартість:</div>
+              <div class="app__price__number"><span class="app__price__number-num">0</span> <span>UAH</span></div>
+            </div>
           </div>
         </div>
         <div class="app__food-wrapper">
-          <ul class="app__food-inner">
-            <li draggable="true" class="app__food-item">
-              <img src="images/dogg.png" alt="food" class="app__food-img" />
-              <h3 class="app__food-name">Text</h3>
-              <p class="app__food-price">100 <span>UAH</span></p>
-            </li>
-            <li draggable="true" class="app__food-item">
-              <img src="images/2.png" alt="food" class="app__food-img" />
-              <h3 class="app__food-name">Text</h3>
-              <p class="app__food-price">100 <span>UAH</span></p>
-            </li>
-          </ul>
+          <ul class="app__food-inner"></ul>
         </div>
         <div class="app__btn-box">
           <button class="app__btn">
