@@ -22,6 +22,36 @@ body {
   }
 }
 
+.blur-show {
+  animation-name: blur-show;
+  animation-duration: 300ms;
+  animation-timing-function: ease-in;
+}
+
+@keyframes blur-show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.blur-hide {
+  animation-name: blur-hide;
+  animation-duration: 300ms;
+  animation-timing-function: ease-in;
+}
+
+@keyframes blur-hide {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
 .hide {
   display: none !important;
 }
@@ -191,6 +221,11 @@ body {
   position: relative;
   transition: all 0.5s;
 }
+
+.app__btn:active {
+  transform: scale(0.8);
+}
+
 .app__btn:hover .app__decor {
   left: 30px;
 }
@@ -210,6 +245,41 @@ body {
   top: 50%;
   transition: all 0.5s;
   transform: translateY(-50%);
+}
+
+/*notification*/
+
+.notification {
+  position: fixed;
+  padding: 10px;
+  top: 0;
+  left: 0;
+  color: #fff;
+  user-select: none;
+  max-height: 250px;
+  overflow-y: hidden;
+  z-index: 999;
+}
+
+.notification__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.notification__item {
+  font-size: 16px;
+  line-height: 18px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.notification-add {
+  background-color: rgba(255, 255, 255, 0.551);
+  color: #000;
+}
+.notification-remove {
+  background-color: rgba(139, 0, 0, 0.781);
 }
 
 /*Modal Form*/
@@ -310,6 +380,10 @@ body {
   font-size: 15px;
   position: relative;
   transition: all 0.5s;
+}
+
+.form__btn:active {
+  transform: scale(0.8);
 }
 
 .form__btn:hover .form__decor {

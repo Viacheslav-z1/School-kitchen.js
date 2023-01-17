@@ -2,9 +2,9 @@ let modal = document.querySelector(".modal");
 let openModalBtn = document.querySelector(".app__btn");
 let closeBtn = document.querySelector(".close-btn");
 
-openModalBtn.addEventListener('click', () => {
-  modal.classList.add('show');
-})
+openModalBtn.addEventListener("click", () => {
+  showModal(modal);
+});
 
 closeBtn.addEventListener("click", (e) => {
   e.preventDefault();
@@ -13,9 +13,24 @@ closeBtn.addEventListener("click", (e) => {
 modal.addEventListener("click", (event) => {
   event.preventDefault();
   if (event.target.classList.contains("modal__inner")) {
-    modal.classList.remove("show");
-  } else if(event.target === closeBtn){
-    modal.classList.remove("show");
+    closeModal(modal);
+  } else if (event.target === closeBtn) {
+    closeModal(modal);
   }
 });
 
+function closeModal(modal) {
+  modal.classList.add('blur-hide')
+  setTimeout(() => {
+    modal.classList.remove("show");
+    modal.classList.remove("blur-hide");
+  }, 280);
+}
+
+function showModal(modal) {
+  modal.classList.add("show");
+  modal.classList.add("blur-show");
+  setTimeout(() => {
+    modal.classList.remove("blur-show");
+  }, 280);
+}

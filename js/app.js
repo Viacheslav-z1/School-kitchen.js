@@ -2,6 +2,7 @@ const trayBox = document.querySelector(".app__tray-box");
 const trayInner = document.querySelector(".app__tray");
 const foodsList = document.querySelector(".app__food-inner");
 const totalPriceNode = document.querySelector(".app__price__number-num");
+const notificationInner = document.querySelector(".notification__inner");
 
 let trayArr = [];
 
@@ -61,7 +62,6 @@ function addFoodToTray(dragEl) {
   trayArr.push(newFood);
 }
 
-
 /*Логіка додавання в корзину */
 function addToTray(e) {
   e.preventDefault();
@@ -77,25 +77,55 @@ function addToTray(e) {
   addFoodToTray(dragEl);
   calcPrice(trayArr);
   renderFoodsInTray(trayArr);
+  createNotification(dragEl);
 }
+
+function createNotification(dragEl) {
+  let name = dragEl.querySelector(".app__food-name").textContent;
+  let notification = `
+          <li class="notification__item notification-add">
+          <span class="notification__text"> Страву </span>
+          <span class="notification__name">${name}</span>
+          <span class="notification__text"> було додано до замовлення </span>
+        </li>
+  `;
+  notificationInner.innerHTML += notification;
+  deleteNotifications();
+  // setTimeout(() => {
+  //   notificationInner.lastElementChild.classList.add("blur-hide");
+  //   setTimeout(() => {
+  //     notificationInner.removeChild(notificationInner.lastElementChild);
+  //   }, 280);
+  // }, 2600);
+}
+
+
+function deleteNotifications() {
+  let notifications = notificationInner.querySelectorAll(".notification__item");
+  notifications.forEach(element => {
+    setTimeout(() => {
+      element.remove();
+    }, 2000);
+  });
+}
+
 
 
 /*Функція рендеру товарів з массиву доданих товарів в корзину */
 function renderFoodsInTray(arr) {
   let foodsHtml = arr.map((item) => {
     return `
-          <img src="${item.imgUrl}" alt="food" class="app__food-img" />
+    <img src="${item.imgUrl}" alt="food" class="app__food-img" />
     `;
   });
   foodsHtml = foodsHtml.join(" ");
   trayInner.innerHTML = foodsHtml;
 }
 
-
 function calcPrice(arr) {
   let totalPrice = 0;
-  arr.forEach(item => {
-    totalPrice += +item.price; 
+  arr.forEach((item) => {
+    totalPrice += +item.price;
   });
   totalPriceNode.innerHTML = totalPrice;
 }
