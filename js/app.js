@@ -91,6 +91,7 @@ function createNotification(dragEl) {
   `;
   notificationInner.innerHTML += notification;
   deleteNotifications();
+  
   // setTimeout(() => {
   //   notificationInner.lastElementChild.classList.add("blur-hide");
   //   setTimeout(() => {
