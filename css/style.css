@@ -6,12 +6,30 @@ body {
   background-color: #5cb299;
 }
 
-.hide{
+.pulse {
+  animation-name: anime;
+  animation-duration: 400ms;
+  animation-direction: alternate;
+  animation-timing-function: ease-in;
+}
+
+@keyframes anime {
+  from {
+    transform: scale(1.02);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.hide {
   display: none !important;
 }
-.show{
+
+.show {
   display: block !important;
 }
+
 .container {
   max-width: 1360px;
   margin: 0 auto;
@@ -20,7 +38,8 @@ body {
 
 .app {
 }
-.app__tray {
+
+.app__tray-box {
   height: 150px;
   max-width: 450px;
   width: 100%;
@@ -30,12 +49,23 @@ body {
   display: flex;
   justify-content: center;
   gap: 5px;
+  user-select: none;
 }
-.app__tray__container{
+
+.app__tray {
+  display: flex;
+  max-width: 600px;
+  max-height: 300px;
+  overflow-y: auto;
+  flex-wrap: wrap;
+}
+
+.app__tray__container {
   padding-top: 50px;
   padding-bottom: 50px;
 }
-.app__food-tray{
+
+.app__food-tray {
   position: absolute;
   left: 40%;
   top: 35%;
@@ -44,6 +74,7 @@ body {
   height: 150px;
   z-index: 100;
 }
+
 .app__tray::after {
   content: "";
   max-width: 450px;
@@ -70,14 +101,17 @@ body {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   gap: 20px;
+  max-height: 250px;
+  height: 100%;
+  padding: 15px;
+  overflow-y: auto;
   /* display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap; */
 }
 .app__food-item {
-  max-width: 150px;
-  width: 100%;
+  width: 120px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -88,24 +122,38 @@ body {
   border-radius: 10px;
   border: 2px solid transparent;
   background-color: rgba(0, 0, 0, 0.096);
-  transition: all .3s;
+  transition: all 0.3s;
+  position: relative;
 }
 
 .app__food-item:hover {
   border: 2px solid #fff;
+  background-color: rgba(0, 0, 0, 0.199);
+  transform: scale(1.02);
 }
+
+.app__food-item:nth-child(odd):hover {
+  transform: rotate(5deg);
+}
+
+.app__food-item:nth-child(even):hover {
+  transform: rotate(-5deg);
+}
+
 .app__food-img {
   width: 70px;
   height: 70px;
   object-fit: contain;
   -webkit-user-drag: none;
 }
+
 .app__food-name {
   text-align: center;
   text-transform: uppercase;
   margin-bottom: 5px;
   user-select: none;
 }
+
 .app__food-price {
   text-align: center;
   font-size: 18px;
@@ -113,14 +161,40 @@ body {
   user-select: none;
 }
 
+.app__food-mobile__add-box {
+  display: none;
+}
+
+.app__food-mobile__add {
+  margin-top: 10px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.514);
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.app__food-mobile__add-btn {
+  background-color: rgba(155, 238, 238, 0.726);
+  padding: 5px;
+  border-radius: 10px;
+}
+
 .app__btn-box {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 .app__btn {
   margin: 0 auto;
-  padding: 30px 50px 30px 120px;
+  padding: 20px 40px 20px 90px;
   background-color: black;
   border-radius: 50px;
   color: #fff;
@@ -128,54 +202,54 @@ body {
   font-family: "Fredoka-Medium", sans-serif;
   font-weight: 500;
   position: relative;
-  transition: all .5s;
+  transition: all 0.5s;
+}
 
-}
 .app__btn:hover .app__decor {
-  left: 45px;
+  left: 30px;
 }
-.app__btn:hover{
+
+.app__btn:hover {
   background-color: rgba(0, 0, 0, 0.829);
 }
+
 .app__decor {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   background-color: #5cb299;
   border-radius: 50%;
   position: absolute;
   left: 10px;
   top: 50%;
-  transition: all .5s;
+  transition: all 0.5s;
   transform: translateY(-50%);
 }
-
-
 
 /*Modal Form*/
 
 .modal {
   display: none;
-  position: fixed;
+  position: absolute;
   z-index: 101;
   left: 0;
   top: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
+  overflow: auto;
   background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.6);
 }
 
-.modal__inner{
+.modal__inner {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
 }
 
-.hope{
+.hope {
   width: 100px;
   height: 200px;
   background-color: #000;
@@ -184,16 +258,15 @@ body {
 
 .modal-content {
   position: relative;
-  background-color: #F5F3EA;
+  background-color: #f5f3ea;
   margin: 15px auto;
   padding: 20px;
-  border: 8px solid #FF8C00;
+  border: 8px solid #ff8c00;
   border-radius: 10px;
-  max-width: 400px;
+  max-width: 500px;
   width: 100%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-
 
 .close-btn {
   color: #666666;
@@ -213,7 +286,8 @@ body {
   display: flex;
   flex-direction: column;
 }
-.form__inner{
+
+.form__inner {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -230,14 +304,14 @@ body {
   padding: 10px;
   background-color: rgba(255, 255, 255, 0.705);
   border-radius: 5px;
-  box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.75);
 }
 
-.form__select{
-  margin-bottom: 10px;
+.form__select {
+  margin-bottom: 15px;
   border: none;
   padding: 10px;
-  box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.75);
 }
 
 .form__btn {
@@ -252,7 +326,7 @@ body {
   font-weight: 500;
   font-size: 15px;
   position: relative;
-  transition: all .5s;
+  transition: all 0.5s;
 }
 
 .form__btn:hover .form__decor {
@@ -269,27 +343,51 @@ body {
   align-items: center;
   width: 40px;
   height: 40px;
-  background-color: #FF8C00;
+  background-color: #ff8c00;
   border-radius: 50%;
   position: absolute;
   left: 5px;
   top: 50%;
-  transition: all .5s;
+  transition: all 0.5s;
   transform: translateY(-50%);
 }
 
-.app__price__container{
-  width: 100px;
-  height: 70px;
+.app__price__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+}
+
+.app__price__container-box {
   background-color: rgba(255, 255, 255, 0.551);
   border-radius: 10px;
   padding: 10px;
-  margin-left: auto;
-  margin-right: auto;
+  display: flex;
+  gap: 10px;
+  margin: 0 auto;
 }
-.app__price__text{
+
+.app__price__text {
   text-align: center;
 }
-.app__price__number{
+
+.app__price__number {
   text-align: center;
 }
+
+.price {
+  display: flex;
+  justify-content: flex-end;
+
+}
+
+.total__price {
+  text-align: center;
+}
+
+.form__list-items {
+  margin-left: 20px;
+}
+
+
