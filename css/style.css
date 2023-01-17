@@ -22,6 +22,37 @@ body {
   }
 }
 
+.blur-show {
+  animation-name: blur-show;
+  animation-duration: 300ms;
+  animation-timing-function: ease-in;
+}
+
+@keyframes blur-show {
+  from {
+   opacity: 0;
+  }
+  to {
+   opacity: 1;
+  }
+}
+
+.blur-hide {
+  animation-name: blur-hide;
+  animation-duration: 300ms;
+  animation-timing-function: ease-in;
+}
+
+@keyframes blur-hide {
+  from {
+   opacity: 1;
+  }
+  to {
+   opacity: 0;
+  }
+}
+
+
 .hide {
   display: none !important;
 }
@@ -191,6 +222,11 @@ body {
   position: relative;
   transition: all 0.5s;
 }
+
+.app__btn:active {
+  transform: scale(0.8);
+}
+
 .app__btn:hover .app__decor {
   left: 30px;
 }
@@ -310,6 +346,10 @@ body {
   font-size: 15px;
   position: relative;
   transition: all 0.5s;
+}
+
+.form__btn:active {
+  transform: scale(0.8);
 }
 
 .form__btn:hover .form__decor {
