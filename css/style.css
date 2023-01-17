@@ -22,6 +22,42 @@ body {
   }
 }
 
+
+.hide {
+  display: none !important;
+}
+
+
+.blur-show {
+  animation-name: blur-show;
+  animation-duration: 300ms;
+  animation-timing-function: ease-in;
+}
+
+@keyframes blur-show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.blur-hide {
+  animation-name: blur-hide;
+  animation-duration: 300ms;
+  animation-timing-function: ease-in;
+}
+
+@keyframes blur-hide {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
 .hide {
   display: none !important;
 }
@@ -39,6 +75,8 @@ body {
 .app {
 }
 
+
+
 .app__tray-box {
   height: 150px;
   max-width: 450px;
@@ -52,6 +90,8 @@ body {
   user-select: none;
 }
 
+
+
 .app__tray {
   display: flex;
   max-width: 600px;
@@ -59,6 +99,8 @@ body {
   overflow-y: auto;
   flex-wrap: wrap;
 }
+
+
 
 .app__tray__container {
   padding-top: 50px;
@@ -131,6 +173,12 @@ body {
   background-color: rgba(0, 0, 0, 0.199);
   transform: scale(1.02);
 }
+
+
+.app__food-item:nth-child(odd):hover {
+  transform: rotate(5deg);
+}
+
 
 .app__food-item:nth-child(odd):hover {
   transform: rotate(5deg);
@@ -205,9 +253,17 @@ body {
   transition: all 0.5s;
 }
 
+.app__btn:active {
+  transform: scale(0.8);
+
+}
+
 .app__btn:hover .app__decor {
   left: 30px;
 }
+
+
+
 
 .app__btn:hover {
   background-color: rgba(0, 0, 0, 0.829);
@@ -227,6 +283,43 @@ body {
   transition: all 0.5s;
   transform: translateY(-50%);
 }
+
+
+/*notification*/
+
+.notification {
+  position: fixed;
+  padding: 10px;
+  top: 0;
+  left: 0;
+  color: #fff;
+  user-select: none;
+  max-height: 250px;
+  overflow-y: hidden;
+  z-index: 999;
+}
+
+.notification__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.notification__item {
+  font-size: 16px;
+  line-height: 18px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.notification-add {
+  background-color: rgba(255, 255, 255, 0.551);
+  color: #000;
+}
+.notification-remove {
+  background-color: rgba(139, 0, 0, 0.781);
+}
+
 
 /*Modal Form*/
 
@@ -287,6 +380,8 @@ body {
   flex-direction: column;
 }
 
+
+
 .form__inner {
   display: flex;
   justify-content: space-between;
@@ -309,6 +404,7 @@ body {
 
 .form__select {
   margin-bottom: 15px;
+  margin-bottom: 10px;
   border: none;
   padding: 10px;
   box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.75);
@@ -327,6 +423,10 @@ body {
   font-size: 15px;
   position: relative;
   transition: all 0.5s;
+}
+
+.form__btn:active {
+  transform: scale(0.8);
 }
 
 .form__btn:hover .form__decor {
@@ -359,6 +459,9 @@ body {
   user-select: none;
 }
 
+
+
+
 .app__price__container-box {
   background-color: rgba(255, 255, 255, 0.551);
   border-radius: 10px;
@@ -367,6 +470,7 @@ body {
   gap: 10px;
   margin: 0 auto;
 }
+
 
 .app__price__text {
   text-align: center;
@@ -390,4 +494,12 @@ body {
   margin-left: 20px;
 }
 
+
+
+.app__price__text {
+  text-align: center;
+}
+.app__price__number {
+  text-align: center;
+}
 

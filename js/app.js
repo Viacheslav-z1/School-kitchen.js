@@ -2,8 +2,12 @@ const trayBox = document.querySelector(".app__tray-box");
 const trayInner = document.querySelector(".app__tray");
 const foodsList = document.querySelector(".app__food-inner");
 const totalPriceNode = document.querySelector(".app__price__number-num");
+
 const formList = document.querySelector(".form__list-items")
 const totalPriceForm = document.querySelector(".total__price_form")
+
+const notificationInner = document.querySelector(".notification__inner");
+
 
 let trayArr = [];
 
@@ -79,8 +83,45 @@ function addToTray(e) {
   addFoodToTray(dragEl);
   calcPrice(trayArr);
   renderFoodsInTray(trayArr);
+
   renderFoodsList(trayArr)
 }
+
+
+
+  createNotification(dragEl);
+}
+
+function createNotification(dragEl) {
+  let name = dragEl.querySelector(".app__food-name").textContent;
+  let notification = `
+          <li class="notification__item notification-add">
+          <span class="notification__text"> Страву </span>
+          <span class="notification__name">${name}</span>
+          <span class="notification__text"> було додано до замовлення </span>
+        </li>
+  `;
+  notificationInner.innerHTML += notification;
+  deleteNotifications();
+  // setTimeout(() => {
+  //   notificationInner.lastElementChild.classList.add("blur-hide");
+  //   setTimeout(() => {
+  //     notificationInner.removeChild(notificationInner.lastElementChild);
+  //   }, 280);
+  // }, 2600);
+}
+
+
+function deleteNotifications() {
+  let notifications = notificationInner.querySelectorAll(".notification__item");
+  notifications.forEach(element => {
+    setTimeout(() => {
+      element.remove();
+    }, 2000);
+  });
+}
+
+
 
 
 /*Функція рендеру товарів з массиву доданих товарів в корзину */
@@ -88,11 +129,13 @@ function renderFoodsInTray(arr) {
   let foodsHtml = arr.map((item) => {
     return `
           <img src="${item.imgUrl}" alt="food" class="app__food-img" />
+    <img src="${item.imgUrl}" alt="food" class="app__food-img" />
     `;
   });
   foodsHtml = foodsHtml.join(" ");
   trayInner.innerHTML = foodsHtml;
 }
+
 
 
 function calcPrice(arr) {
@@ -102,6 +145,14 @@ function calcPrice(arr) {
   });
   totalPriceNode.innerHTML = totalPrice;
   totalPriceForm.innerHTML = totalPrice;
+
+
+function calcPrice(arr) {
+  let totalPrice = 0;
+  arr.forEach((item) => {
+    totalPrice += +item.price;
+  });
+  totalPriceNode.innerHTML = totalPrice;
 
 }
 
@@ -138,6 +189,7 @@ function renderFoodsItems(arr) {
   trayBox.addEventListener("drop", addToTray);
 }
 
+
 /*Функція виводу товару в список в формі */
 function renderFoodsList(arr) {
   let foodsHtml = arr.map((item) => {
@@ -149,3 +201,4 @@ function renderFoodsList(arr) {
   formList.innerHTML = foodsHtml;
 
 }
+
